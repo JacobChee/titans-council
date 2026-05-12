@@ -1,0 +1,6 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "pip install uv && uv run python -m backend.main"
+restartPolicyType = "on_failure"
