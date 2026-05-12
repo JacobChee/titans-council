@@ -58,7 +58,22 @@ function App() {
   };
 
   const handleSendMessage = async (content) => {
-    if (!currentConversationId) return;
+    let convId = currentConversationId;
+    if (!convId) {
+      try {
+        const newConv = await api.createConversation();
+        setConversations((prev) => [
+          { id: newConv.id, created_at: newConv.created_at, message_count: 0 },
+          ...prev,
+        ]);
+        setCurrentConversationId(newConv.id);
+        setCurrentConversation(newConv);
+        convId = newConv.id;
+      } catch (error) {
+        console.error('Failed to create conversation:', error);
+        return;
+      }
+    }
 
     setIsLoading(true);
     try {
@@ -90,7 +105,7 @@ function App() {
       }));
 
       // Send message with streaming
-      await api.sendMessageStream(currentConversationId, content, (eventType, event) => {
+      await api.sendMessageStream(convId, content, (eventType, event) => {
         switch (eventType) {
           case 'stage1_start':
             setCurrentConversation((prev) => {
