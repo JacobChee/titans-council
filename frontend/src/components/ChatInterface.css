@@ -125,10 +125,6 @@
 }
 
 /* CHAT HEADER */
-.chat-header {
-  padding: 12px 32px 0;
-}
-
 .back-btn {
   background: none;
   border: 1px solid var(--border);
@@ -269,4 +265,103 @@
   font-size: 11px;
   color: var(--muted2);
   margin-top: 8px;
+}
+
+/* MENU BUTTON — hidden on desktop, shown on mobile */
+.menu-btn {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 16px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  font-family: inherit;
+}
+
+.menu-btn:hover { color: var(--gold); border-color: var(--gold); }
+
+.landing-menu {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+
+/* CHAT HEADER with menu button */
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px 0;
+}
+
+/* MOBILE */
+@media (max-width: 680px) {
+  .menu-btn { display: block; }
+
+  .landing {
+    padding: 60px 16px 24px;
+    justify-content: flex-start;
+  }
+
+  .landing-icon { font-size: 36px; margin-bottom: 10px; }
+
+  .landing-title { font-size: 24px; }
+
+  .landing-tagline { font-size: 14px; margin-bottom: 20px; }
+
+  .landing-how {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .landing-step {
+    min-width: 130px;
+    padding: 12px 14px;
+  }
+
+  .landing-titans {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .landing-titan-chip {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .messages-container {
+    padding: 16px;
+    gap: 20px;
+  }
+
+  .chat-header {
+    padding: 12px 16px 0;
+  }
+
+  .user-bubble {
+    max-width: 90%;
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .input-area {
+    padding: 12px 16px 16px;
+  }
+
+  .input-form { gap: 8px; }
+
+  .message-input {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .send-button {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .input-hint { display: none; }
 }

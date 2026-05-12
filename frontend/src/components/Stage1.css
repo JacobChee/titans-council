@@ -71,3 +71,10 @@
   padding: 18px;
   background: var(--bg2);
 }
+
+@media (max-width: 680px) {
+  .stage1 { padding: 14px; }
+  .tab { padding: 5px 10px; font-size: 11px; }
+  .tab-content { padding: 12px 14px; }
+  .response-text { font-size: 13px; }
+}

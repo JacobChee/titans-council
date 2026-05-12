@@ -153,3 +153,12 @@
   margin: 4px 0;
   font-size: 13px;
 }
+
+@media (max-width: 680px) {
+  .stage2 { padding: 14px; }
+  .stage2 .tab { padding: 5px 10px; font-size: 11px; }
+  .stage2 .tab-content { padding: 12px 14px; }
+  .ranking-content { font-size: 13px; }
+  .aggregate-item { gap: 8px; padding: 8px 10px; }
+  .rank-model { font-size: 12px; }
+}

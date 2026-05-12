@@ -5,4 +5,34 @@
   overflow: hidden;
   background: var(--bg);
   color: var(--text);
+  position: relative;
+}
+
+/* Mobile sidebar overlay */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 10;
+}
+
+@media (max-width: 680px) {
+  .sidebar {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    bottom: 0;
+    z-index: 20;
+    transition: left 0.25s ease;
+    width: 260px !important;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .sidebar-overlay.open {
+    display: block;
+  }
 }

@@ -8,9 +8,9 @@ const TITANS = [
   { emoji: '🟢', name: 'Jensen Huang' },
 ];
 
-export default function Sidebar({ conversations, currentConversationId, onSelectConversation, onNewConversation }) {
+export default function Sidebar({ conversations, currentConversationId, onSelectConversation, onNewConversation, isOpen }) {
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
         <div className="sidebar-logo">
           <span className="sidebar-logo-icon">🏛️</span>

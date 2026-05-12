@@ -26,7 +26,7 @@ const STAGE_LABELS = {
   stage3: '🏛️ Synthesising final answer...',
 };
 
-export default function ChatInterface({ conversation, onSendMessage, isLoading, onBack }) {
+export default function ChatInterface({ conversation, onSendMessage, isLoading, onBack, onMenuOpen }) {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
 
@@ -62,6 +62,7 @@ export default function ChatInterface({ conversation, onSendMessage, isLoading, 
 
       {showLanding ? (
         <div className="landing">
+          <button className="menu-btn landing-menu" onClick={onMenuOpen}>☰</button>
           <div className="landing-icon">🏛️</div>
           <div className="landing-title">Titans Council</div>
           <p className="landing-tagline">
@@ -109,6 +110,7 @@ export default function ChatInterface({ conversation, onSendMessage, isLoading, 
         <>
         <div className="chat-header">
           <button className="back-btn" onClick={onBack}>← Home</button>
+          <button className="menu-btn" onClick={onMenuOpen}>☰</button>
         </div>
         <div className="messages-container">
           {conversation.messages.map((msg, index) => (

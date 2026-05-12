@@ -9,6 +9,7 @@ function App() {
   const [currentConversationId, setCurrentConversationId] = useState(null);
   const [currentConversation, setCurrentConversation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Load conversations on mount
   useEffect(() => {
@@ -199,17 +200,21 @@ function App() {
 
   return (
     <div className="app">
+      <div className={`sidebar-overlay ${sidebarOpen ? 'open' : ''}`} onClick={() => setSidebarOpen(false)} />
       <Sidebar
         conversations={conversations}
         currentConversationId={currentConversationId}
         onSelectConversation={handleSelectConversation}
-        onNewConversation={handleNewConversation}
+        onNewConversation={() => { handleNewConversation(); setSidebarOpen(false); }}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
       <ChatInterface
         conversation={currentConversation}
         onSendMessage={handleSendMessage}
         isLoading={isLoading}
         onBack={() => { setCurrentConversationId(null); setCurrentConversation(null); }}
+        onMenuOpen={() => setSidebarOpen(true)}
       />
     </div>
   );
