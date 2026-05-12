@@ -34,25 +34,7 @@ export default function Sidebar({ conversations, currentConversationId, onSelect
         ))}
       </div>
 
-      <div className="conversation-list">
-        {conversations.length > 0 && (
-          <div className="conversation-list-label">History</div>
-        )}
-        {conversations.length === 0 ? (
-          <div className="no-conversations">No sessions yet</div>
-        ) : (
-          conversations.map(conv => (
-            <div
-              key={conv.id}
-              className={`conversation-item ${conv.id === currentConversationId ? 'active' : ''}`}
-              onClick={() => onSelectConversation(conv.id)}
-            >
-              <div className="conversation-title">{conv.title || 'New Session'}</div>
-              <div className="conversation-meta">{conv.message_count} question{conv.message_count !== 1 ? 's' : ''}</div>
-            </div>
-          ))
-        )}
-      </div>
+      <div className="conversation-list" />
     </div>
   );
 }
