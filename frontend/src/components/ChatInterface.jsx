@@ -106,6 +106,7 @@ export default function ChatInterface({ conversation, onSendMessage, isLoading, 
           </div>
         </div>
       ) : (
+        <>
         <div className="chat-header">
           <button className="back-btn" onClick={onBack}>← Home</button>
         </div>
@@ -155,6 +156,7 @@ export default function ChatInterface({ conversation, onSendMessage, isLoading, 
           ))}
           <div ref={messagesEndRef} />
         </div>
+        </>
       )}
 
       <div className="input-area">
