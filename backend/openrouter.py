@@ -58,7 +58,7 @@ async def query_models_parallel(
     messages: List[Dict[str, str]]
 ) -> Dict[str, Optional[Dict[str, Any]]]:
     """
-    Query multiple models in parallel.
+    Query multiple models in parallel with the same messages.
 
     Args:
         models: List of OpenRouter model identifiers
@@ -69,11 +69,30 @@ async def query_models_parallel(
     """
     import asyncio
 
-    # Create tasks for all models
     tasks = [query_model(model, messages) for model in models]
-
-    # Wait for all to complete
     responses = await asyncio.gather(*tasks)
-
-    # Map models to their responses
     return {model: response for model, response in zip(models, responses)}
+
+
+async def query_titans_parallel(
+    titans: List[Dict],
+    user_messages: List[Dict[str, str]]
+) -> Dict[str, Optional[Dict[str, Any]]]:
+    """
+    Query multiple titans in parallel, each with their own system prompt.
+
+    Args:
+        titans: List of titan dicts with 'name', 'model', and 'system_prompt'
+        user_messages: The user-facing messages (system prompt is prepended per titan)
+
+    Returns:
+        Dict mapping titan name to response dict (or None if failed)
+    """
+    import asyncio
+
+    async def query_titan(titan):
+        messages = [{"role": "system", "content": titan["system_prompt"]}] + user_messages
+        return titan["name"], await query_model(titan["model"], messages)
+
+    results = await asyncio.gather(*[query_titan(t) for t in titans])
+    return {name: response for name, response in results}

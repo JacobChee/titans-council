@@ -38,15 +38,13 @@ export default function Stage2({ rankings, labelToModel, aggregateRankings }) {
             className={`tab ${activeTab === index ? 'active' : ''}`}
             onClick={() => setActiveTab(index)}
           >
-            {rank.model.split('/')[1] || rank.model}
+            {rank.model}
           </button>
         ))}
       </div>
 
       <div className="tab-content">
-        <div className="ranking-model">
-          {rankings[activeTab].model}
-        </div>
+        <div className="ranking-model">{rankings[activeTab].model}</div>
         <div className="ranking-content markdown-content">
           <ReactMarkdown>
             {deAnonymizeText(rankings[activeTab].ranking, labelToModel)}
@@ -60,9 +58,7 @@ export default function Stage2({ rankings, labelToModel, aggregateRankings }) {
             <ol>
               {rankings[activeTab].parsed_ranking.map((label, i) => (
                 <li key={i}>
-                  {labelToModel && labelToModel[label]
-                    ? labelToModel[label].split('/')[1] || labelToModel[label]
-                    : label}
+                  {labelToModel?.[label] ?? label}
                 </li>
               ))}
             </ol>
@@ -80,9 +76,7 @@ export default function Stage2({ rankings, labelToModel, aggregateRankings }) {
             {aggregateRankings.map((agg, index) => (
               <div key={index} className="aggregate-item">
                 <span className="rank-position">#{index + 1}</span>
-                <span className="rank-model">
-                  {agg.model.split('/')[1] || agg.model}
-                </span>
+                <span className="rank-model">{agg.model}</span>
                 <span className="rank-score">
                   Avg: {agg.average_rank.toFixed(2)}
                 </span>
