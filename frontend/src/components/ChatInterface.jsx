@@ -26,7 +26,7 @@ const STAGE_LABELS = {
   stage3: '🏛️ Synthesising final answer...',
 };
 
-export default function ChatInterface({ conversation, onSendMessage, isLoading }) {
+export default function ChatInterface({ conversation, onSendMessage, isLoading, onBack }) {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
 
@@ -106,6 +106,9 @@ export default function ChatInterface({ conversation, onSendMessage, isLoading }
           </div>
         </div>
       ) : (
+        <div className="chat-header">
+          <button className="back-btn" onClick={onBack}>← Home</button>
+        </div>
         <div className="messages-container">
           {conversation.messages.map((msg, index) => (
             <div key={index} className="message-group">

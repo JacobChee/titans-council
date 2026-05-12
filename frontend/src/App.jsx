@@ -193,6 +193,7 @@ function App() {
         conversation={currentConversation}
         onSendMessage={handleSendMessage}
         isLoading={isLoading}
+        onBack={() => { setCurrentConversationId(null); setCurrentConversation(null); }}
       />
     </div>
   );
