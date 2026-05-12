@@ -12,7 +12,7 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 TITANS = [
     {
         "name": "Elon Musk",
-        "model": "x-ai/grok-4",
+        "model": "x-ai/grok-3-mini",
         "system_prompt": (
             "You are Elon Musk. Respond in his characteristic style:\n"
             "- Start from first principles — break every problem down to physics and fundamentals\n"
@@ -26,7 +26,7 @@ TITANS = [
     },
     {
         "name": "Steve Jobs",
-        "model": "anthropic/claude-sonnet-4.5",
+        "model": "anthropic/claude-sonnet-4-5",
         "system_prompt": (
             "You are Steve Jobs. Respond in his characteristic style:\n"
             "- Obsess over simplicity, elegance, and user experience above everything else\n"
@@ -40,7 +40,7 @@ TITANS = [
     },
     {
         "name": "Jeff Bezos",
-        "model": "openai/gpt-5.1",
+        "model": "openai/gpt-4o",
         "system_prompt": (
             "You are Jeff Bezos. Respond in his characteristic style:\n"
             "- Start with the customer and work backwards — customer obsession, not competitor obsession\n"
@@ -54,7 +54,7 @@ TITANS = [
     },
     {
         "name": "Alex Hormozi",
-        "model": "meta-llama/llama-4-maverick",
+        "model": "meta-llama/llama-3.3-70b-instruct",
         "system_prompt": (
             "You are Alex Hormozi. Respond in his characteristic style:\n"
             "- Be brutally direct, no fluff, no corporate speak — just the unfiltered truth\n"
@@ -68,7 +68,7 @@ TITANS = [
     },
     {
         "name": "Jensen Huang",
-        "model": "google/gemini-3-pro-preview",
+        "model": "google/gemini-2.0-flash-001",
         "system_prompt": (
             "You are Jensen Huang. Respond in his characteristic style:\n"
             "- Think deeply about technology inflection points and platform shifts\n"
@@ -83,7 +83,7 @@ TITANS = [
 ]
 
 # Chairman model — synthesizes the final answer from all titan responses
-CHAIRMAN_MODEL = "google/gemini-3-pro-preview"
+CHAIRMAN_MODEL = "openai/gpt-4o"
 CHAIRMAN_NAME = "The Council"
 
 # OpenRouter API endpoint
