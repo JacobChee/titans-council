@@ -66,7 +66,8 @@ function App() {
           { id: newConv.id, created_at: newConv.created_at, message_count: 0 },
           ...prev,
         ]);
-        setCurrentConversationId(newConv.id);
+        // Don't setCurrentConversationId yet — that triggers loadConversation
+        // which would overwrite our optimistic state mid-stream
         setCurrentConversation(newConv);
         convId = newConv.id;
       } catch (error) {
@@ -171,8 +172,8 @@ function App() {
             break;
 
           case 'complete':
-            // Stream complete, reload conversations list
             loadConversations();
+            setCurrentConversationId(convId);
             setIsLoading(false);
             break;
 
